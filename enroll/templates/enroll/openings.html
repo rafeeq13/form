@@ -1,0 +1,75 @@
+{% extends 'enroll/base.html' %}
+{% load static %}
+{% block content %}
+<div class="col-sm-10 bg-dark">
+  <p><a href="{% url 'apply' %}" class="text-dark my-5 btn btn-warning" style="font-size: 30px; color: gray; font-weight:bold;">Go To Apply</a></p>
+    <h3 class="text-dark my-5 btn btn-warning">Company Details</h3>
+    <div class="container">
+            <table class="table bg-white">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">size</th>
+                    <th scope="col">location</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for cp in company_details %}
+                  <tr>
+                    <td>{{cp.name}}</td>
+                    <td>{{cp.size}}</td>
+                    <td>{{cp.location}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+    </div>
+    </div>
+
+
+
+
+<div class="col-sm-10 bg-dark">
+  
+<h3 class="text-dark my-5 btn btn-warning">See All Openings</h3>
+<div class="container">
+        <table class="table bg-white">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Job-Title</th>
+                <th scope="col">Job_Description</th>
+                <th scope="col">requirements</th>
+                <th scope="col">Post Date</th>
+                <th scope="col"> Deadline</th>
+                <th scope="col"> Action</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for jb in jobs %}
+              <tr>
+                <th scope="row">{{jb.id}}</th>
+                <td>{{jb.jobtitle}}</td>
+                <td>{{jb.job_description}}</td>
+                <td>{{jb.requirements}}</td>
+                <td>{{jb.add}}</td>
+                <td>{{jb.deadline}}</td>
+                <td class="text-center"><a href="{% url 'apply' %}" class="btn btn-warning btn-sm">apply</a>
+                  {% if perms.enroll.delete_addjob %}
+                  <form action="{% url 'delete' jb.id %}" method="post" class="d-line">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger btn-sm mt-2" value="Delete" >
+                    {% endif %}
+                    
+                  </form>
+                  </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          <a href="{% url 'home' %}" class="btn btn-danger btn-sm my-5">Go To Home</a>
+</div>
+
+</div>
+{% endblock content %}
+

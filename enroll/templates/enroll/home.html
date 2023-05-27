@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="{% static 'enroll/css/bootstrap.css' %}">
+<link rel="stylesheet" href="{% static 'enroll/css/style.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-dark">
+    <a class="navbar-brand btn btn-warning " style="font-family:serif; font-weight:bold;" href="{% url 'home' %}">We Hire You</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+        <a class="nav-link active text-white" aria-current="page" href="{% url 'home' %}">Home</a>
+        </li>
+        {% if request.user.is_authenticated %}
+        <li class="nav-item">
+        <a class="nav-link text-white" href="logout">Log-out</a>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle text-white" href="{% url 'apply' %}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Jobs
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{% url 'carear' %}">career openings</a></li>
+            <li><a class="dropdown-item" href="{% url 'addjob' %}">Add job</a></li>
+            <li><a class="dropdown-item" href="{% url 'apply' %}">Apply</a></li>
+            <li><a class="dropdown-item" href="{% url 'applications' %}">Applications</a></li>
+        </ul>
+    </li>
+    {% else %}
+    <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'signup' %}">sign-up</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link text-white" href="{% url 'login' %}">Log-in</a>
+        </li>
+        {% endif %}
+    </ul>
+    <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    </div>
+</div>
+</nav>
+<div class=" container-fluid bg-dark">
+    <div class="row">
+    <div class="col-sm-12">
+</div>
+
+<div class='container-fluid bg-dark'>
+{% block content %}
+<div class='container-fluid'>
+    <img src="{% static 'enroll/images/pypic.jpg' %}" 
+    alt="Here is the profile picture" 
+    width='1310px'
+    height="600px" alt="here is the  profiel picture" >
+
+</div>
+{% endblock content %}
+<div class='container-fluid bg-white'>
+    <div class='row '>
+    <div class='col-sm-4 '>
+        <h3 class='text-dark '>About</h3> <hr>
+        <div class='text-justify'>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, 
+                when an unknown printer took a galley of type and scrambled it to make a type specimen book. 
+                It has survived not only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with the release of
+                Letraset sheets containing Lorem Ipsum passages, and more recently with
+                desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum. 
+                It was popularised in the 1960s with the release of
+                Letraset sheets containing Lorem </p>
+            </div>
+    </div>
+   
+    <div class='col-sm-4 ' >
+        <h3 class='text-dark text-center '>Contact Us</h3> <hr>
+        <div class='bg-warning text-center' >
+            <h6 class='text-center'>EMAIL:</h6>
+            <a href="mailto:info@iub.edu.pk" target="_blank"><i class="fa fa-envelope"></i></a>
+            <h6 class='text-center'>FACEBOOK:</h6>
+            <a href="https://www.facebook.com/rafeeq.blaoch" target="_blank"><i class="fab fa-facebook"> <p></p></i></a>
+            <h6 class='text-center'>TWITTER:</h6>
+            <a href="https://twitter.com/theiubwp"><i class="fab fa-twitter"><p></p></i></a>
+            <h6 class='text-center'>TEL:</h6>
+            <a href="tel:+92 - 62 - 9250235"><i class="fa fa-phone"><p></p></i></a>
+            <h6 class='text-center'>linked-In:</h6>
+            <a href="https://www.linkedin.com/school/the-islamia-university-of-bahawalpur/"><i class="fab fa-linkedin"><p></p></i></a>
+            
+
+   </div>
+</div>
+        <div class='col-sm-2'>
+            <h3>Our locations</h3> <hr>
+            <ul class="list-group">
+                <a href="https://www.glassdoor.com/"><li class="list-group-item bg-success text-white"style="font-size:20px; font-weight:bold;">Dubai </li></a>
+                <a href="https://www.glassdoor.com/"><img src="{% static 'enroll/images/dubai.jpg' %}" alt=""
+                width='190px'
+                height='100px'
+                ></a>
+                <a href="https://www.rozee.pk/"><li class="list-group-item bg-success text-white"style="font-size:20px; font-weight:bold;">Pakistan</li></a>
+                <a href="https://www.rozee.pk/"><img src="{% static 'enroll/images/pakistan.jpg' %}" alt=""
+                width='190px'
+                height='100px'
+                ></a>
+               
+                
+              </ul>
+        </div>
+        <div class='col-sm-2'>
+            <h3 class='text-dark'></h3> 
+          
+            
+            <ul class="list-group">
+               <hr class='margin'>
+                <a href="https://www.britishcouncil.ma/en"><li class="list-group-item bg-success text-white" style="font-size:20px; font-weight:bold;">Moroco</li></a>
+                <a href="https://www.britishcouncil.ma/en"><img src="{% static 'enroll/images/moroco.jpg' %}" alt=""
+                width='190px'
+                height='100px'
+                ></a>
+                <a href="https://careers.stryker.com/"><li class="list-group-item bg-success text-white"style="font-size:20px; font-weight:bold;">China</li></a>
+                <a href="https://careers.stryker.com/"><img src="{% static 'enroll/images/china.png' %}" alt=""
+                width='190px'
+                height='100px'
+                ></a>
+                
+              </ul>
+        </div>
+       
+    
+
+    
+
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+<script src={% static 'enroll/js/boostrap.js' %}></script>
+<script src={% static 'enroll/js/jquery.js' %}></script>
+<script src={% static 'enroll/js/popper.js' %}></script>  
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+
+</body>
+</html>
